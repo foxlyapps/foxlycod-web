@@ -19,7 +19,6 @@
   --color-brand-2: var(--brand-2);
   --color-ink: var(--ink);
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
   --animate-marquee: marquee 40s linear infinite;
   --animate-float: float 7s ease-in-out infinite;
   --animate-shine: shine 2.8s linear infinite;
@@ -41,8 +40,13 @@
   100% { transform: scale(1.8); opacity: 0; }
 }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  scroll-padding-top: 6rem; /* fixed header height for #anchor jumps */
+}
 body {
+  overflow-x: hidden;
   background: var(--bg);
   color: var(--fg);
   font-family: var(--font-sans);
@@ -60,10 +64,13 @@ body {
   background: linear-gradient(135deg, var(--brand) 0%, var(--brand-2) 100%);
 }
 @utility glass {
-  background: rgba(255, 255, 255, 0.72);
-  backdrop-filter: blur(14px) saturate(1.4);
-  -webkit-backdrop-filter: blur(14px) saturate(1.4);
+  background: rgba(255, 255, 255, 0.86);
+  backdrop-filter: blur(16px) saturate(1.4);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
   border: 1px solid rgba(20, 11, 7, 0.08);
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass { background: rgba(255, 255, 255, 0.98); }
 }
 @utility grain {
   background-image: radial-gradient(rgba(20, 11, 7, 0.09) 1px, transparent 1px);
@@ -71,6 +78,49 @@ body {
 }
 @utility ring-glow {
   box-shadow: 0 0 0 1px rgba(255, 77, 18, 0.35), 0 12px 40px -12px rgba(255, 77, 18, 0.45);
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 2.75rem; /* 44px touch target; visual track drawn below */
+  background: transparent;
+  cursor: pointer;
+  touch-action: pan-y;
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 0.375rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--brand) 18%, transparent);
+}
+input[type="range"]::-moz-range-track {
+  height: 0.375rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--brand) 18%, transparent);
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 1.375rem;
+  height: 1.375rem;
+  margin-top: -0.5rem;
+  border-radius: 999px;
+  background: var(--brand);
+  border: 3px solid #fff;
+  box-shadow: 0 2px 8px rgba(255, 77, 18, 0.5);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 1.375rem;
+  height: 1.375rem;
+  border-radius: 999px;
+  background: var(--brand);
+  border: 3px solid #fff;
+  box-shadow: 0 2px 8px rgba(255, 77, 18, 0.5);
+}
+input[type="range"]:focus-visible::-webkit-slider-thumb {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
 }
 
 details > summary { list-style: none; cursor: pointer; }

@@ -90,7 +90,7 @@ export function HeroFormDemo() {
   return (
     <div className="relative mx-auto w-full max-w-[420px]" style={{ ["--t" as string]: t.c, ["--ts" as string]: t.soft }}>
       {/* theme swatches (AI designer) */}
-      <div className="mb-3 flex items-center justify-between gap-3 px-1">
+      <div className="mb-3 flex flex-wrap items-center justify-between gap-y-2 gap-x-3 px-1">
         <div className="flex items-center gap-1.5 text-xs font-medium text-muted">
           <Sparkles className="size-3.5 text-brand" /> Brand theme
         </div>
@@ -100,14 +100,14 @@ export function HeroFormDemo() {
               key={th.name}
               onClick={() => setTheme(i)}
               aria-label={`${th.name} theme`}
-              className={`size-6 rounded-full border-2 transition-transform hover:scale-110 ${i === theme ? "scale-110 border-fg" : "border-white"}`}
+              className={`size-7 rounded-full border-2 transition-transform hover:scale-110 sm:size-6 ${i === theme ? "scale-110 border-fg" : "border-white"}`}
               style={{ background: th.c }}
             />
           ))}
         </div>
         <button
           onClick={() => setControls((v) => !v)}
-          className={`rounded-full border px-2.5 py-1 text-[11px] font-semibold transition-colors ${controls ? "border-brand bg-brand text-white" : "border-line bg-white text-fg"}`}
+          className={`rounded-full border px-3 py-1.5 text-[11px] font-semibold transition-colors ${controls ? "border-brand bg-brand text-white" : "border-line bg-white text-fg"}`}
         >
           Merchant rules
         </button>
@@ -353,7 +353,16 @@ function Slider({ label, v, set, min, max, step = 1, unit, pre }: { label: strin
         <span className="text-white/80">{label}</span>
         <span className="font-bold text-brand-2">{pre ? `${unit}${v}` : `${v}${unit}`}</span>
       </span>
-      <input type="range" min={min} max={max} step={step} value={v} onChange={(e) => set(+e.target.value)} className="accent-[var(--brand)]" />
+      <input
+        type="range"
+        min={min}
+        max={max}
+        step={step}
+        value={v}
+        onChange={(e) => set(+e.target.value)}
+        aria-label={label}
+        className="h-9 [&::-moz-range-track]:bg-white/20 [&::-webkit-slider-runnable-track]:bg-white/20"
+      />
     </label>
   );
 }

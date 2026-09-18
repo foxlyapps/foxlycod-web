@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 export default function Calculator() {
   return (
     <>
-      <section className="pt-36 pb-24 sm:pt-44">
+      <section className="pt-28 pb-16 sm:pt-36 sm:pb-24 lg:pt-44">
         <Container>
           <Breadcrumbs items={[{ name: "COD Calculator" }]} />
           <Heading
@@ -30,7 +30,7 @@ export default function Calculator() {
           </div>
         </Container>
       </section>
-      <section className="pb-24">
+      <section className="pb-16 sm:pb-24">
         <Container>
           <Heading eyebrow="How Foxly changes the math" title="Three levers, one form." />
           <div className="mt-12">

@@ -25,7 +25,7 @@ export default function Pricing() {
   return (
     <>
       <FaqJsonLd items={pricingFaqs} />
-      <section className="pt-36 pb-16 sm:pt-44">
+      <section className="pt-28 pb-12 sm:pt-36 sm:pb-16 lg:pt-44">
         <Container>
           <Breadcrumbs items={[{ name: "Pricing" }]} />
           <Heading
@@ -39,10 +39,10 @@ export default function Pricing() {
           </div>
         </Container>
       </section>
-      <section className="py-16">
+      <section className="py-12 sm:py-16">
         <Container>
           <Reveal>
-            <Card className="grid gap-8 p-8 sm:grid-cols-3 sm:p-12">
+            <Card className="grid gap-8 p-6 sm:grid-cols-3 sm:p-12">
               <div>
                 <p className="text-5xl font-bold tracking-tight text-gradient"><Counter to={0} suffix="%" /></p>
                 <p className="mt-2 font-semibold">Commission</p>
@@ -62,7 +62,7 @@ export default function Pricing() {
           </Reveal>
         </Container>
       </section>
-      <section className="pb-24">
+      <section className="pb-16 sm:pb-24">
         <Container>
           <Heading eyebrow="Billing FAQ" title="The fine print, in plain words." />
           <div className="mt-12">

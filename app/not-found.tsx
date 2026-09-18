@@ -2,7 +2,7 @@ import { Container, Button } from "@/components/ui";
 
 export default function NotFound() {
   return (
-    <section className="pt-44 pb-32 text-center">
+    <section className="pt-32 pb-24 text-center sm:pt-44 sm:pb-32">
       <Container className="flex flex-col items-center gap-6">
         <p className="text-8xl font-bold tracking-tight text-gradient">404</p>
         <h1 className="text-3xl font-bold">This page went RTO.</h1>

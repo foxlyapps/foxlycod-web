@@ -20,7 +20,7 @@ const extra = [
     title: "Your fields, your layout, your language.",
     body: "Drag-and-drop editor with custom fields, fonts, colors, buttons, pop-ups, embedded or floating forms. Ships in 8 languages including Arabic and Hebrew RTL.",
     bullets: ["Drag-and-drop editor", "Custom fields & validation", "Address validation & shipping options", "Multi-language & multi-currency"],
-    img: "/screens/customize.png",
+    img: "/screens/customize.webp",
     alt: "Foxly customizable form with 14 templates",
   },
   {
@@ -29,7 +29,7 @@ const extra = [
     title: "Your brand on every step, even the loading screen.",
     body: "Upload your logo once. It shows on the form, OTP screen, loading state and thank-you page for a checkout customers actually trust.",
     bullets: ["Logo on loading & OTP screens", "Consistent colors end to end", "Remove Foxly branding on Enterprise", "Custom CSS & HTML when you want it"],
-    img: "/screens/brand-logo.png",
+    img: "/screens/brand-logo.webp",
     alt: "Foxly custom brand logo during checkout loading",
   },
 ];
@@ -37,7 +37,7 @@ const extra = [
 export default function Features() {
   return (
     <>
-      <section className="pt-36 pb-10 sm:pt-44">
+      <section className="pt-28 pb-8 sm:pt-36 sm:pb-10 lg:pt-44">
         <Container>
           <Breadcrumbs items={[{ name: "Features" }]} />
           <Heading
@@ -48,7 +48,15 @@ export default function Features() {
           />
           <Reveal className="mt-14">
             <Card className="overflow-hidden">
-              <Image src="/screens/payments.png" alt="Foxly flexible payment options: prepaid, partial and COD" width={1600} height={900} className="h-auto w-full" priority />
+              <Image
+                src="/screens/payments.webp"
+                alt="Foxly flexible payment options: prepaid, partial and COD"
+                width={1600}
+                height={900}
+                sizes="(min-width: 1280px) 1200px, 100vw"
+                className="h-auto w-full"
+                priority
+              />
             </Card>
           </Reveal>
         </Container>

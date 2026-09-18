@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "motion/react";
-import { Star, Check, X, Minus, Sparkles, Wand2, Layers, BadgePercent, ShieldCheck, Languages, MousePointerClick, Settings2, Rocket, Quote } from "lucide-react";
+import { Star, Check, X, Minus, Sparkles, Wand2, Layers, BadgePercent, ShieldCheck, Languages, MousePointerClick, Settings2, Rocket, Quote, MoveHorizontal } from "lucide-react";
 import { Container, Button, Reveal, Eyebrow, Heading, Card } from "./ui";
 import { HeroFormDemo } from "./hero-form-demo";
 import { Counter } from "./counter";
@@ -14,13 +14,13 @@ import { showcase, type ShowcaseItem } from "@/lib/showcase";
 /* ---------------- HERO ---------------- */
 export function Hero() {
   return (
-    <section className="relative overflow-hidden pt-32 pb-16 sm:pt-40 sm:pb-24">
+    <section className="relative overflow-hidden pt-28 pb-12 sm:pt-40 sm:pb-24">
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute left-1/2 top-0 h-[700px] w-[1200px] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(255,138,0,.28),transparent)] blur-2xl" />
         <div className="absolute -right-40 top-40 size-[500px] rounded-full bg-[radial-gradient(closest-side,rgba(255,77,18,.22),transparent)] blur-2xl animate-float" />
         <div className="absolute inset-0 grain opacity-40 [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]" />
       </div>
-      <Container className="grid items-center gap-14 lg:grid-cols-[1.05fr_.95fr] lg:items-start lg:pt-10">
+      <Container className="grid items-center gap-10 sm:gap-14 lg:grid-cols-[1.05fr_.95fr] lg:items-start lg:pt-10">
         <div className="flex flex-col items-start gap-6">
           <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <a href={site.reviews} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full border border-line bg-white/70 py-1 pl-1.5 pr-3 text-xs font-medium shadow-sm backdrop-blur">
@@ -34,11 +34,11 @@ export function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.05 }}
-            className="text-5xl font-bold leading-[1.02] tracking-tight text-balance sm:text-6xl xl:text-7xl"
+            className="text-[2.125rem] font-bold leading-[1.05] tracking-tight text-balance [overflow-wrap:break-word] sm:text-6xl sm:leading-[1.02] xl:text-7xl"
           >
             Turn cash‑on‑delivery into <span className="text-gradient">paid orders.</span>
           </motion.h1>
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.15 }} className="max-w-xl text-lg leading-relaxed text-muted text-pretty sm:text-xl">
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.15 }} className="max-w-xl text-base leading-relaxed text-muted text-pretty sm:text-lg lg:text-xl">
             One branded 1‑click order form. Three ways to pay: <strong className="text-fg">full prepaid</strong> with a discount, a{" "}
             <strong className="text-fg">partial deposit</strong>, or <strong className="text-fg">COD</strong> with a fee. OTP‑verified, pixel‑tracked, 0% commission.
           </motion.p>
@@ -96,7 +96,7 @@ export function Problem() {
     { n: 0, s: "", l: "revenue from a fake order, but real cost, real inventory lock, real chaos", raw: "₹0" },
   ];
   return (
-    <section className="py-24 sm:py-32">
+    <section className="py-16 sm:py-24 lg:py-32">
       <Container>
         <Heading
           eyebrow="The COD problem"
@@ -107,11 +107,11 @@ export function Problem() {
           }
           sub="Fake numbers, impulse orders, doorstep refusals. Every RTO costs you two shipping legs and a week of locked inventory. Most COD apps only try to block the bad orders. Foxly also converts the good ones to prepaid."
         />
-        <div className="mt-14 grid gap-5 md:grid-cols-3">
+        <div className="mt-10 grid gap-5 sm:mt-14 md:grid-cols-3">
           {stats.map((s, i) => (
             <Reveal key={s.l} delay={i * 0.1}>
               <Card className="h-full p-8">
-                <p className="text-6xl font-bold tracking-tight text-gradient">{s.raw ?? <Counter to={s.n} suffix={s.s} />}</p>
+                <p className="text-5xl font-bold tracking-tight text-gradient sm:text-6xl">{s.raw ?? <Counter to={s.n} suffix={s.s} />}</p>
                 <p className="mt-3 text-base leading-relaxed text-muted">{s.l}</p>
               </Card>
             </Reveal>
@@ -130,14 +130,14 @@ export function Payments() {
     { icon: ShieldCheck, t: "COD, on your terms", d: "Add a COD fee. Show or hide COD by location, cart value or product. Verify with OTP.", c: "from-brand to-brand-2" },
   ];
   return (
-    <section id="payments" className="relative py-24 sm:py-32">
+    <section id="payments" className="relative py-16 sm:py-24 lg:py-32">
       <Container>
         <Heading
           eyebrow="Three ways to pay. One form."
           title="Let customers choose. Nudge them to prepaid."
           sub="Set a prepaid discount, a partial deposit and a COD fee once. Foxly does the math live inside the form so the best option for you looks like the best deal for them."
         />
-        <Reveal className="mt-14">
+        <Reveal className="mt-10 sm:mt-14">
           <Card className="overflow-hidden p-4 sm:p-8">
             <PaymentFlowSvg className="h-auto w-full" />
           </Card>
@@ -164,15 +164,15 @@ export function Payments() {
 
 export function Showcase({ items = showcase }: { items?: ShowcaseItem[] }) {
   return (
-    <section className="py-12 sm:py-20" aria-labelledby="showcase-h">
-      <Container className="flex flex-col gap-24 sm:gap-32">
+    <section className="py-10 sm:py-16 lg:py-20" aria-labelledby="showcase-h">
+      <Container className="flex flex-col gap-16 sm:gap-24 lg:gap-32">
         <h2 id="showcase-h" className="sr-only">Foxly features</h2>
         {items.map((it, i) => (
-          <div key={it.id} id={it.id} className={`grid items-center gap-10 lg:grid-cols-2 lg:gap-16 ${i % 2 ? "lg:[&>*:first-child]:order-2" : ""}`}>
+          <div key={it.id} id={it.id} className={`grid items-center gap-7 sm:gap-10 lg:grid-cols-2 lg:gap-16 ${i % 2 ? "lg:[&>*:first-child]:order-2" : ""}`}>
             <Reveal className="flex flex-col items-start gap-5">
               <Eyebrow>{it.eyebrow}</Eyebrow>
-              <h3 className="text-3xl font-bold tracking-tight text-balance sm:text-4xl">{it.title}</h3>
-              <p className="text-lg leading-relaxed text-muted">{it.body}</p>
+              <h3 className="text-2xl font-bold tracking-tight text-balance sm:text-3xl lg:text-4xl">{it.title}</h3>
+              <p className="text-base leading-relaxed text-muted sm:text-lg">{it.body}</p>
               <ul className="grid gap-2.5 sm:grid-cols-2">
                 {it.bullets.map((b) => (
                   <li key={b} className="flex items-start gap-2 text-sm">
@@ -206,10 +206,10 @@ export function Steps() {
     { icon: Rocket, t: "Go live on every product", d: "Forms appear on product and cart pages. Orders land in Shopify like any other, with pixels firing." },
   ];
   return (
-    <section className="py-24 sm:py-32">
+    <section className="py-16 sm:py-24 lg:py-32">
       <Container>
         <Heading eyebrow="Setup" title="Live in under 10 minutes." sub="No theme code. No developer. 24/7 live chat if you want a hand." />
-        <div className="relative mt-14 grid gap-6 md:grid-cols-3">
+        <div className="relative mt-10 grid gap-6 sm:mt-14 md:grid-cols-3">
           <svg className="pointer-events-none absolute inset-x-0 top-12 hidden h-2 w-full md:block" aria-hidden>
             <motion.line x1="16%" x2="84%" y1="4" y2="4" stroke="rgba(255,77,18,.35)" strokeWidth="2" strokeDasharray="6 8" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true }} transition={{ duration: 1.5 }} />
           </svg>
@@ -242,18 +242,22 @@ function CellView({ v, hero }: { v: Cell; hero?: boolean }) {
 export function Compare({ full = false }: { full?: boolean }) {
   const rows = full ? compareRows : compareRows.slice(0, 8);
   return (
-    <section className="py-24 sm:py-32">
+    <section className="py-16 sm:py-24 lg:py-32">
       <Container>
         <Heading
           eyebrow="Why Foxly"
           title={full ? "Foxly vs COD King vs the rest." : "Built to sell, not just to block."}
           sub="Most COD apps stop at verification. Foxly is a conversion tool first: branded form, upsells, prepaid nudges, and every pixel wired. Based on publicly listed features, September 2026."
         />
-        <Reveal className="mt-14 overflow-x-auto">
-          <table className="w-full min-w-[640px] border-separate border-spacing-0 text-sm">
+        <Reveal className="relative mt-10 sm:mt-14">
+          <p className="mb-3 flex items-center gap-1.5 text-xs text-muted md:hidden" aria-hidden>
+            <MoveHorizontal className="size-3.5" /> Swipe the table to compare
+          </p>
+          <div className="overflow-x-auto pb-2 [scrollbar-width:thin]">
+          <table className="w-full min-w-[580px] border-separate border-spacing-0 text-sm">
             <thead>
               <tr>
-                <th className="sticky left-0 bg-bg px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-muted">Feature</th>
+                <th className="sticky left-0 z-20 bg-bg px-4 py-3 text-left text-xs font-semibold uppercase tracking-wide text-muted">Feature</th>
                 {compareCols.map((c, i) => (
                   <th key={c} className={`px-4 py-3 text-center text-sm font-bold ${i === 0 ? "rounded-t-2xl bg-brand-gradient text-white" : "text-muted"}`}>
                     {i === 0 ? <span className="inline-flex items-center gap-1.5"><Sparkles className="size-4" />{c}</span> : c}
@@ -264,7 +268,7 @@ export function Compare({ full = false }: { full?: boolean }) {
             <tbody>
               {rows.map((r, ri) => (
                 <tr key={r.f} className="group">
-                  <td className="sticky left-0 border-b border-line bg-bg px-4 py-3.5 font-medium">{r.f}</td>
+                  <td className="sticky left-0 z-20 border-b border-line bg-bg px-4 py-3.5 font-medium after:absolute after:inset-y-0 after:-right-3 after:w-3 after:bg-gradient-to-r after:from-bg after:to-transparent after:content-['']">{r.f}</td>
                   {r.v.map((v, i) => (
                     <td key={i} className={`border-b border-line px-4 py-3.5 text-center ${i === 0 ? `bg-white ${ri === rows.length - 1 ? "rounded-b-2xl" : ""}` : ""}`}>
                       <CellView v={v} hero={i === 0} />
@@ -274,6 +278,7 @@ export function Compare({ full = false }: { full?: boolean }) {
               ))}
             </tbody>
           </table>
+          </div>
         </Reveal>
         {!full && (
           <Reveal className="mt-8 text-center">
@@ -290,7 +295,7 @@ export function Compare({ full = false }: { full?: boolean }) {
 /* ---------------- TESTIMONIAL ---------------- */
 export function Testimonial() {
   return (
-    <section className="py-12 sm:py-20">
+    <section className="py-10 sm:py-16 lg:py-20">
       <Container>
         <Reveal>
           <Card className="relative mx-auto max-w-4xl overflow-hidden p-8 sm:p-14">
@@ -300,7 +305,7 @@ export function Testimonial() {
                 <Star key={i} className="size-5 fill-current" />
               ))}
             </div>
-            <blockquote className="mt-5 text-2xl font-medium leading-snug tracking-tight text-balance sm:text-3xl">
+            <blockquote className="mt-5 text-xl font-medium leading-snug tracking-tight text-balance sm:text-2xl lg:text-3xl">
               “From partial payment options, bundle offer flexibility &amp; prepaid discounts, this app provides features I haven&apos;t seen other apps on Shopify provide. Extremely user‑friendly and easy to set up.”
             </blockquote>
             <div className="mt-7 flex items-center justify-between gap-4">

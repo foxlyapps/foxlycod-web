@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist } from "next/font/google";
 import { MotionConfig } from "motion/react";
 import "./globals.css";
 import { Nav } from "@/components/nav";
@@ -8,8 +8,7 @@ import { StickyCta } from "@/components/cta";
 import { SiteJsonLd } from "@/components/seo";
 import { site } from "@/lib/site";
 
-const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
-const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
+const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"], display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -40,7 +39,7 @@ export const viewport: Viewport = { themeColor: "#ff4d12" };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full`}>
+    <html lang="en" className={`${geistSans.variable} h-full`}>
       <body className="flex min-h-full flex-col pb-20 md:pb-0">
         <SiteJsonLd />
         <MotionConfig reducedMotion="user">

@@ -21,7 +21,7 @@ const angles = [
 export default function ComparePage() {
   return (
     <>
-      <section className="pt-36 sm:pt-44">
+      <section className="pt-28 sm:pt-36 lg:pt-44">
         <Container>
           <Breadcrumbs items={[{ name: "Compare" }]} />
           <Heading
@@ -30,7 +30,7 @@ export default function ComparePage() {
             title={<>Choosing a COD app? <span className="text-gradient">Compare honestly.</span></>}
             sub="We list what each product publicly advertises. Where a competitor does not list a feature we say so rather than marking it missing. Spot an error? Email us and we will fix it."
           />
-          <div className="mt-14 grid gap-5 md:grid-cols-2">
+          <div className="mt-10 grid gap-5 sm:mt-14 md:grid-cols-2">
             {angles.map((a, i) => (
               <Reveal key={a.t} delay={i * 0.08}>
                 <Card className="h-full p-7">

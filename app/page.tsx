@@ -15,7 +15,7 @@ export default function Home() {
       <TrustBand />
       <ValueGrid />
       <Problem />
-      <section className="pb-24 sm:pb-32">
+      <section className="pb-16 sm:pb-24 lg:pb-32">
         <Container>
           <Heading eyebrow="COD calculator" title="What is RTO costing you right now?" sub="Drag the sliders. Numbers update live. Then compare with a $6.99 plan." />
           <div className="mt-12">
@@ -28,7 +28,7 @@ export default function Home() {
       <Steps />
       <Compare />
       <Testimonial />
-      <section id="pricing" className="py-24 sm:py-32">
+      <section id="pricing" className="py-16 sm:py-24 lg:py-32">
         <Container>
           <Heading eyebrow="Pricing" title="Free to start. Flat to scale. 0% commission, always." sub="Pay for a plan, not a percentage. Every tier ships every feature; you only pay for order volume." />
           <div className="mt-12">
@@ -36,7 +36,7 @@ export default function Home() {
           </div>
         </Container>
       </section>
-      <section className="pb-24 sm:pb-32">
+      <section className="pb-16 sm:pb-24 lg:pb-32">
         <Container>
           <Heading eyebrow="FAQ" title="Questions merchants ask before installing." />
           <div className="mt-12">

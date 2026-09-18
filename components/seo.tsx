@@ -48,7 +48,7 @@ export function AppJsonLd() {
         url: site.url,
         installUrl: site.install,
         image: `${site.url}/opengraph-image`,
-        screenshot: ["ai-design", "payments", "upsells", "otp", "pixels"].map((s) => `${site.url}/screens/${s}.png`),
+        screenshot: ["ai-design", "payments", "upsells", "otp", "pixels"].map((s) => `${site.url}/screens/${s}.webp`),
         description:
           "Branded 1-click Shopify order form offering Full Prepaid, Partial Payment and Cash on Delivery with OTP verification, fraud blocking, upsells and multi-pixel tracking.",
         featureList: ["Prepaid, partial & COD payments", "AI form designer", "OTP verification", "Fraud blocking", "Upsells & downsells", "Multi-pixel tracking"],
@@ -86,7 +86,7 @@ export function Breadcrumbs({ items }: { items: { name: string; href?: string }[
             <li key={it.name} className="flex items-center gap-1">
               {i > 0 && <ChevronRight className="size-3" aria-hidden />}
               {it.href ? (
-                <Link href={it.href} className="hover:text-fg">
+                <Link href={it.href} className="inline-block py-1.5 hover:text-fg">
                   {it.name}
                 </Link>
               ) : (

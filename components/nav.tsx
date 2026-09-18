@@ -66,10 +66,10 @@ export function Nav() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -8, scale: 0.98 }}
             transition={{ duration: 0.2 }}
-            className="glass mx-auto mt-2 flex max-w-7xl flex-col gap-1 rounded-2xl p-3 md:hidden"
+            className="mx-auto mt-2 flex max-w-7xl flex-col gap-1 rounded-2xl border border-line bg-white/98 p-3 shadow-[0_20px_50px_-20px_rgba(20,11,7,.45)] backdrop-blur-xl md:hidden"
           >
             {nav.map((n) => (
-              <Link key={n.href} href={n.href} onClick={() => setOpen(false)} className="rounded-xl px-4 py-3 text-base font-medium hover:bg-fg/5">
+              <Link key={n.href} href={n.href} onClick={() => setOpen(false)} className="rounded-xl px-4 py-3.5 text-base font-medium hover:bg-fg/5">
                 {n.label}
               </Link>
             ))}

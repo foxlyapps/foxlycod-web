@@ -36,8 +36,8 @@ const cols = [
 
 export function Footer() {
   return (
-    <footer className="relative mt-32 border-t border-line bg-white/50">
-      <Container className="grid gap-12 py-16 md:grid-cols-[1.4fr_repeat(3,1fr)]">
+    <footer className="relative mt-20 border-t border-line bg-white/50 sm:mt-32">
+      <Container className="grid gap-10 py-12 sm:gap-12 sm:py-16 md:grid-cols-[1.4fr_repeat(3,1fr)]">
         <div className="flex flex-col gap-5">
           <Logo />
           <p className="max-w-xs text-sm leading-relaxed text-muted">
@@ -61,17 +61,17 @@ export function Footer() {
         {cols.map((c) => (
           <div key={c.h}>
             <h4 className="mb-4 text-sm font-semibold">{c.h}</h4>
-            <ul className="flex flex-col gap-2.5 text-sm text-muted">
+            <ul className="flex flex-col text-sm text-muted">
               {c.l.map(([label, href]) =>
                 href.startsWith("http") || href.startsWith("mailto") ? (
                   <li key={label}>
-                    <a href={href} target="_blank" rel="noopener noreferrer" className="hover:text-fg">
+                    <a href={href} target="_blank" rel="noopener noreferrer" className="inline-block py-1.5 hover:text-fg">
                       {label}
                     </a>
                   </li>
                 ) : (
                   <li key={label}>
-                    <Link href={href} className="hover:text-fg">
+                    <Link href={href} className="inline-block py-1.5 hover:text-fg">
                       {label}
                     </Link>
                   </li>

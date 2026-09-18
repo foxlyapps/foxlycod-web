@@ -57,8 +57,8 @@ export function Heading({
   return (
     <Reveal className={`flex flex-col gap-4 ${a}`}>
       {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
-      <Tag className="max-w-3xl text-3xl font-bold tracking-tight text-balance sm:text-5xl">{title}</Tag>
-      {sub && <p className="max-w-2xl text-lg leading-relaxed text-muted text-pretty">{sub}</p>}
+      <Tag className="max-w-3xl text-[1.75rem] font-bold leading-[1.15] tracking-tight text-balance sm:text-4xl sm:leading-tight lg:text-5xl">{title}</Tag>
+      {sub && <p className="max-w-2xl text-base leading-relaxed text-muted text-pretty sm:text-lg">{sub}</p>}
     </Reveal>
   );
 }
@@ -76,7 +76,7 @@ type BtnProps = {
 export function Button({ href, children, variant = "primary", size = "md", className = "", external, arrow }: BtnProps) {
   const base =
     "group relative inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-300 will-change-transform active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand";
-  const sizes = size === "lg" ? "h-13 px-7 text-base" : "h-11 px-5 text-sm";
+  const sizes = size === "lg" ? "h-13 px-6 text-base sm:px-7" : "h-11 px-5 text-sm";
   const variants = {
     primary: "bg-brand-gradient text-white shadow-[0_10px_30px_-10px_rgba(255,77,18,.7)] hover:shadow-[0_18px_40px_-10px_rgba(255,77,18,.8)] hover:-translate-y-0.5",
     ghost: "border border-line bg-white/60 text-fg hover:bg-white hover:border-fg/20",

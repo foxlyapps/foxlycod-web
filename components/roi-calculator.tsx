@@ -30,7 +30,7 @@ export function RoiCalculator({ compact = false }: { compact?: boolean }) {
 
   return (
     <div className={`grid gap-6 ${compact ? "" : "lg:grid-cols-[1fr_1.1fr]"}`}>
-      <div className="grid gap-5 rounded-3xl border border-line bg-white/70 p-6">
+      <div className="grid gap-3 rounded-3xl border border-line bg-white/70 p-5 sm:gap-4 sm:p-6">
         <Range label="Monthly orders" v={orders} set={setOrders} min={50} max={10000} step={50} fmt={(n) => n.toLocaleString()} />
         <Range label="Average order value" v={aov} set={setAov} min={200} max={10000} step={50} fmt={fmt} />
         <Range label="COD share of orders" v={codShare} set={setCodShare} min={10} max={100} step={5} fmt={(n) => n + "%"} />
@@ -56,15 +56,15 @@ export function RoiCalculator({ compact = false }: { compact?: boolean }) {
             <Counter to={prepaidCash} prefix="₹" />
           </Stat>
         </div>
-        <motion.div layout className="rounded-3xl bg-ink p-6 text-white">
+        <motion.div layout className="rounded-3xl bg-ink p-5 text-white sm:p-6">
           <p className="text-sm text-white/70">Yearly, that is roughly</p>
-          <p className="mt-1 text-4xl font-bold tracking-tight text-gradient sm:text-5xl">
+          <p className="mt-1 text-[2rem] font-bold tracking-tight text-gradient sm:text-4xl lg:text-5xl">
             <Counter to={saved * 12} prefix="₹" />
           </p>
           <p className="mt-1 text-sm text-white/70">
             back in your margin. Foxly Pro costs $6.99/month. Free plan costs nothing.
           </p>
-          <div className="mt-5 flex flex-wrap gap-3">
+          <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <Button href={site.install} external arrow>
               Stop the bleed, install free
             </Button>
@@ -82,12 +82,12 @@ export function RoiCalculator({ compact = false }: { compact?: boolean }) {
 
 function Range({ label, v, set, min, max, step = 1, fmt }: { label: string; v: number; set: (n: number) => void; min: number; max: number; step?: number; fmt: (n: number) => string }) {
   return (
-    <label className="grid gap-2">
+    <label className="grid gap-1">
       <span className="flex items-baseline justify-between text-sm">
         <span className="font-medium">{label}</span>
         <span className="font-bold text-brand">{fmt(v)}</span>
       </span>
-      <input type="range" min={min} max={max} step={step} value={v} onChange={(e) => set(+e.target.value)} className="w-full accent-[var(--brand)]" />
+      <input type="range" min={min} max={max} step={step} value={v} onChange={(e) => set(+e.target.value)} aria-label={label} className="w-full" />
     </label>
   );
 }
@@ -95,7 +95,7 @@ function Range({ label, v, set, min, max, step = 1, fmt }: { label: string; v: n
 function Stat({ icon: Icon, label, tone, children }: { icon: typeof Wallet; label: string; tone: "good" | "bad"; children: React.ReactNode }) {
   const c = tone === "good" ? "text-emerald-600 bg-emerald-50" : "text-rose-600 bg-rose-50";
   return (
-    <div className="rounded-3xl border border-line bg-white/70 p-5">
+    <div className="rounded-3xl border border-line bg-white/70 p-4 sm:p-5">
       <span className={`inline-grid size-9 place-items-center rounded-xl ${c}`}>
         <Icon className="size-4" />
       </span>
