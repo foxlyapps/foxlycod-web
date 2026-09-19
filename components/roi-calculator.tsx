@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion } from "motion/react";
 import { TrendingDown, TrendingUp, Wallet, PackageX } from "lucide-react";
 import { Counter } from "./counter";
-import { Button } from "./ui";
+import { Button, BookButton } from "./ui";
 import { site } from "@/lib/site";
 
 // ponytail: single-currency (INR), assumption-based model. Ranges below are conservative
@@ -62,15 +62,13 @@ export function RoiCalculator({ compact = false }: { compact?: boolean }) {
             <Counter to={saved * 12} prefix="₹" />
           </p>
           <p className="mt-1 text-sm text-white/70">
-            back in your margin. Foxly Pro costs $6.99/month. Free plan costs nothing.
+            back in your margin. Book 30 free minutes and we will set up the form and the prepaid offer that gets it.
           </p>
           <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <Button href={site.install} external arrow>
-              Stop the bleed, install free
-            </Button>
+            <BookButton source="calculator">Show me how, free</BookButton>
             {!compact && (
-              <Button href="/pricing" variant="ghost" className="border-white/20 bg-white/10 text-white hover:bg-white/20 hover:border-white/40">
-                See pricing
+              <Button href={site.install} variant="ghost" external className="border-white/20 bg-white/10 text-white hover:bg-white/20 hover:border-white/40">
+                Install it myself
               </Button>
             )}
           </div>

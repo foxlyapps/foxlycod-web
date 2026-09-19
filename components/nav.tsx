@@ -6,13 +6,14 @@ import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "motion/react";
 import { Menu, X } from "lucide-react";
 import { Logo } from "./logo";
-import { Button } from "./ui";
+import { Button, BookButton } from "./ui";
 import { nav, site } from "@/lib/site";
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const path = usePathname();
+  const focus = path === "/book-demo"; // ad landing page: no exit links
 
   useEffect(() => {
     const f = () => setScrolled(window.scrollY > 12);
@@ -20,6 +21,23 @@ export function Nav() {
     addEventListener("scroll", f, { passive: true });
     return () => removeEventListener("scroll", f);
   }, []);
+
+  if (focus)
+    return (
+      <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5">
+        <div
+          className={`mx-auto flex h-16 max-w-7xl items-center justify-between rounded-2xl px-4 transition-all duration-500 sm:px-6 ${
+            scrolled ? "glass shadow-[0_10px_40px_-20px_rgba(20,11,7,.35)]" : "bg-transparent"
+          }`}
+        >
+          <Logo />
+          <BookButton source="nav-focus">
+            <span className="sm:hidden">Book demo</span>
+            <span className="hidden sm:inline">Book my free demo</span>
+          </BookButton>
+        </div>
+      </header>
+    );
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5">
@@ -43,12 +61,10 @@ export function Nav() {
           ))}
         </nav>
         <div className="hidden items-center gap-2 md:flex">
-          <Button href={site.demo} variant="ghost" external>
-            Live demo
-          </Button>
-          <Button href={site.install} external arrow>
+          <Button href={site.install} variant="ghost" external>
             Install free
           </Button>
+          <BookButton source="nav">Book a free demo</BookButton>
         </div>
         <button
           className="grid size-10 place-items-center rounded-full hover:bg-fg/5 md:hidden"
@@ -74,10 +90,10 @@ export function Nav() {
               </Link>
             ))}
             <div className="mt-2 flex flex-col gap-2">
-              <Button href={site.demo} variant="ghost" external>
-                Live demo
-              </Button>
-              <Button href={site.install} external arrow>
+              <BookButton source="nav-mobile" className="w-full">
+                Book a free demo
+              </BookButton>
+              <Button href={site.install} variant="ghost" external>
                 Install free on Shopify
               </Button>
             </div>

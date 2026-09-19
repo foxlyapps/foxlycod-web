@@ -5,6 +5,9 @@ export const site = {
   install: "https://apps.shopify.com/foxly-cod-partial-prepaid",
   demo: "https://vanitydotin.myshopify.com/products/lavender-lemonade-berry-berry-lip-balm-combo",
   reviews: "https://apps.shopify.com/foxly-cod-partial-prepaid/reviews",
+  // Booking link. Override per-environment with NEXT_PUBLIC_CAL_BOOKING_URL
+  // (must be NEXT_PUBLIC_*: it is read in client components and inlined at build time).
+  book: process.env.NEXT_PUBLIC_CAL_BOOKING_URL || "https://cal.com/s-aziz/30min",
   support: "support@redfoxdigital.in",
   developer: "RedFox Digital",
 };

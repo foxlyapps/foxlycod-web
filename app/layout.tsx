@@ -6,6 +6,8 @@ import { Nav } from "@/components/nav";
 import { Footer } from "@/components/footer";
 import { StickyCta } from "@/components/cta";
 import { SiteJsonLd } from "@/components/seo";
+import { BookingProvider } from "@/components/booking-modal";
+import { FloatingBookCta } from "@/components/floating-book-cta";
 import { site } from "@/lib/site";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"], display: "swap" });
@@ -43,10 +45,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="flex min-h-full flex-col pb-20 md:pb-0">
         <SiteJsonLd />
         <MotionConfig reducedMotion="user">
-          <Nav />
-          <main className="flex-1">{children}</main>
-          <Footer />
-          <StickyCta />
+          <BookingProvider>
+            <Nav />
+            <main className="flex-1">{children}</main>
+            <Footer />
+            <StickyCta />
+            <FloatingBookCta />
+          </BookingProvider>
         </MotionConfig>
       </body>
     </html>

@@ -5,7 +5,7 @@ import { motion } from "motion/react";
 import { Check, Sparkles } from "lucide-react";
 import { plans } from "@/lib/site";
 import { site } from "@/lib/site";
-import { Button } from "./ui";
+import { Button, BookButton } from "./ui";
 
 export function PricingTable() {
   const [yearly, setYearly] = useState(true);
@@ -67,16 +67,30 @@ export function PricingTable() {
                   </li>
                 ))}
               </ul>
-              <Button href={site.install} external arrow variant={p.popular ? "primary" : "dark"} className="mt-6 w-full">
-                {price === 0 ? "Start free" : `Start with ${p.name}`}
-              </Button>
+              {p.popular ? (
+                <BookButton source="pricing-popular" className="mt-6 w-full">
+                  Book a free demo
+                </BookButton>
+              ) : (
+                <Button href={site.install} external arrow variant="dark" className="mt-6 w-full">
+                  {price === 0 ? "Start free" : `Start with ${p.name}`}
+                </Button>
+              )}
             </motion.div>
           );
         })}
       </div>
-      <p className="mt-8 text-center text-xs text-muted">
-        All plans: 0% commission on every order. Prices in USD, billed via Shopify. Cancel anytime from your Shopify admin.
-      </p>
+      <div className="mt-8 flex flex-col items-center gap-3 text-center">
+        <p className="text-sm font-medium">
+          Not sure which plan fits your order volume?
+        </p>
+        <BookButton source="pricing-footer" variant="dark">
+          Ask us on a free 30-min call
+        </BookButton>
+        <p className="text-xs text-muted">
+          All plans: 0% commission on every order. Prices in USD, billed via Shopify. Cancel anytime from your Shopify admin.
+        </p>
+      </div>
     </div>
   );
 }

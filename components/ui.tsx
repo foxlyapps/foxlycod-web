@@ -4,6 +4,7 @@ import { motion, type HTMLMotionProps } from "motion/react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import type { ComponentProps, ReactNode } from "react";
+import { useBooking } from "./booking-modal";
 
 export function Container({ className = "", ...p }: ComponentProps<"div">) {
   return <div className={`mx-auto w-full max-w-7xl px-5 sm:px-8 ${className}`} {...p} />;
@@ -63,17 +64,21 @@ export function Heading({
   );
 }
 
+type Variant = "primary" | "ghost" | "dark";
+type Size = "md" | "lg";
+
 type BtnProps = {
   href: string;
   children: ReactNode;
-  variant?: "primary" | "ghost" | "dark";
-  size?: "md" | "lg";
+  variant?: Variant;
+  size?: Size;
   className?: string;
   external?: boolean;
   arrow?: boolean;
 };
 
-export function Button({ href, children, variant = "primary", size = "md", className = "", external, arrow }: BtnProps) {
+/** Shared button chrome, so links and real <button>s look identical. */
+export function btnClass(variant: Variant = "primary", size: Size = "md", className = "") {
   const base =
     "group relative inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all duration-300 will-change-transform active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand";
   const sizes = size === "lg" ? "h-13 px-6 text-base sm:px-7" : "h-11 px-5 text-sm";
@@ -82,8 +87,12 @@ export function Button({ href, children, variant = "primary", size = "md", class
     ghost: "border border-line bg-white/60 text-fg hover:bg-white hover:border-fg/20",
     dark: "bg-ink text-white hover:bg-black hover:-translate-y-0.5",
   } as const;
-  const cls = `${base} ${sizes} ${variants[variant]} ${className}`;
-  const inner = (
+  return `${base} ${sizes} ${variants[variant]} ${className}`;
+}
+
+/** Shine sweep + arrow, shared by Button and BookButton. */
+export function BtnInner({ children, variant = "primary", arrow }: { children: ReactNode; variant?: Variant; arrow?: boolean }) {
+  return (
     <>
       {variant === "primary" && (
         <span className="pointer-events-none absolute inset-0 overflow-hidden rounded-full">
@@ -94,6 +103,11 @@ export function Button({ href, children, variant = "primary", size = "md", class
       {arrow && <ArrowRight className="relative size-4 transition-transform duration-300 group-hover:translate-x-1" />}
     </>
   );
+}
+
+export function Button({ href, children, variant = "primary", size = "md", className = "", external, arrow }: BtnProps) {
+  const cls = btnClass(variant, size, className);
+  const inner = <BtnInner variant={variant} arrow={arrow}>{children}</BtnInner>;
   return external ? (
     <a href={href} target="_blank" rel="noopener noreferrer" className={cls}>
       {inner}
@@ -102,6 +116,35 @@ export function Button({ href, children, variant = "primary", size = "md", class
     <Link href={href} className={cls}>
       {inner}
     </Link>
+  );
+}
+
+/**
+ * Primary conversion CTA: opens the booking modal instead of navigating.
+ * A real <button> so keyboard and screen-reader semantics are right.
+ */
+export function BookButton({
+  children = "Book a free demo",
+  variant = "primary",
+  size = "md",
+  className = "",
+  arrow = true,
+  source,
+}: {
+  children?: ReactNode;
+  variant?: Variant;
+  size?: Size;
+  className?: string;
+  arrow?: boolean;
+  source?: string;
+}) {
+  const { open } = useBooking();
+  return (
+    <button type="button" onClick={() => open(source)} className={btnClass(variant, size, className)}>
+      <BtnInner variant={variant} arrow={arrow}>
+        {children}
+      </BtnInner>
+    </button>
   );
 }
 

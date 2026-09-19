@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Star } from "lucide-react";
 import { Logo } from "./logo";
 import { Container } from "./ui";
@@ -26,6 +29,7 @@ const cols = [
   {
     h: "Company",
     l: [
+      ["Book a free demo", "/book-demo"],
       ["Install on Shopify", site.install],
       ["Live demo store", site.demo],
       ["Reviews", site.reviews],
@@ -35,6 +39,27 @@ const cols = [
 ];
 
 export function Footer() {
+  const path = usePathname();
+
+  // Ad landing page: strip every exit link, keep only legal + trust line.
+  if (path === "/book-demo")
+    return (
+      <footer className="relative mt-16 border-t border-line bg-white/50 sm:mt-24">
+        <Container className="flex flex-col items-center gap-3 py-8 text-center text-xs text-muted">
+          <Logo />
+          <p>
+            © {new Date().getFullYear()} {site.developer}. Foxly is not affiliated with Shopify Inc.
+          </p>
+          <p>
+            Questions before booking?{" "}
+            <a href={`mailto:${site.support}`} className="font-semibold text-brand hover:underline">
+              {site.support}
+            </a>
+          </p>
+        </Container>
+      </footer>
+    );
+
   return (
     <footer className="relative mt-20 border-t border-line bg-white/50 sm:mt-32">
       <Container className="grid gap-10 py-12 sm:gap-12 sm:py-16 md:grid-cols-[1.4fr_repeat(3,1fr)]">

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { motion } from "motion/react";
 import { Star, Check, X, Minus, Sparkles, Wand2, Layers, BadgePercent, ShieldCheck, Languages, MousePointerClick, Settings2, Rocket, Quote, MoveHorizontal } from "lucide-react";
-import { Container, Button, Reveal, Eyebrow, Heading, Card } from "./ui";
+import { Container, Button, BookButton, Reveal, Eyebrow, Heading, Card } from "./ui";
 import { HeroFormDemo } from "./hero-form-demo";
 import { Counter } from "./counter";
 import { PaymentFlowSvg, ShieldSvg, PixelSvg } from "./svg";
@@ -43,15 +43,15 @@ export function Hero() {
             <strong className="text-fg">partial deposit</strong>, or <strong className="text-fg">COD</strong> with a fee. OTP‑verified, pixel‑tracked, 0% commission.
           </motion.p>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.25 }} className="flex flex-col gap-3 sm:flex-row">
-            <Button href={site.install} external size="lg" arrow>
+            <BookButton size="lg" source="hero">
+              Book a free demo
+            </BookButton>
+            <Button href={site.install} external size="lg" variant="ghost">
               Install free on Shopify
-            </Button>
-            <Button href={site.demo} external size="lg" variant="ghost">
-              See it on a live store
             </Button>
           </motion.div>
           <motion.ul initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.45 }} className="flex flex-wrap gap-x-5 gap-y-1 text-sm text-muted">
-            {["Free plan, no card", "2‑minute setup", "Dropshipping & D2C", "8 languages incl. RTL"].map((t) => (
+            {["30-min call, no card", "We set it up with you", "Free plan, 0% commission", "Live in 10 minutes"].map((t) => (
               <li key={t} className="flex items-center gap-1.5">
                 <Check className="size-4 text-brand" /> {t}
               </li>
@@ -180,9 +180,9 @@ export function Showcase({ items = showcase }: { items?: ShowcaseItem[] }) {
                   </li>
                 ))}
               </ul>
-              <Button href={site.install} external arrow variant="dark" className="mt-2">
-                Install free
-              </Button>
+              <BookButton source={`showcase-${it.id}`} variant="dark" className="mt-2">
+                Book a free demo
+              </BookButton>
             </Reveal>
             <Reveal delay={0.1} className="relative">
               <motion.div whileHover={{ y: -6, rotate: i % 2 ? 0.6 : -0.6 }} transition={{ type: "spring", stiffness: 200, damping: 18 }} className="overflow-hidden rounded-3xl border border-line bg-white shadow-[0_40px_80px_-40px_rgba(20,11,7,.45)]">
@@ -226,6 +226,12 @@ export function Steps() {
             </Reveal>
           ))}
         </div>
+        <Reveal className="mt-10 flex flex-col items-center gap-3 text-center">
+          <BookButton size="lg" source="steps">
+            Have us do it with you, free
+          </BookButton>
+          <p className="text-sm text-muted">30-minute call. We design the form and build the offer on the spot.</p>
+        </Reveal>
       </Container>
     </section>
   );
