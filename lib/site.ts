@@ -8,7 +8,7 @@ export const site = {
   // Booking link. Override per-environment with NEXT_PUBLIC_CAL_BOOKING_URL
   // (must be NEXT_PUBLIC_*: it is read in client components and inlined at build time).
   book: process.env.NEXT_PUBLIC_CAL_BOOKING_URL || "https://cal.com/s-aziz/30min",
-  support: "support@redfoxdigital.in",
+  support: "support@folyapps.com",
   developer: "RedFox Digital",
 };
 

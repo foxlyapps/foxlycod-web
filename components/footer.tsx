@@ -34,6 +34,7 @@ const cols = [
       ["Live demo store", site.demo],
       ["Reviews", site.reviews],
       ["Support", `mailto:${site.support}`],
+      ["Privacy Policy", "/privacy"],
     ],
   },
 ];
@@ -48,7 +49,10 @@ export function Footer() {
         <Container className="flex flex-col items-center gap-3 py-8 text-center text-xs text-muted">
           <Logo />
           <p>
-            © {new Date().getFullYear()} {site.developer}. Foxly is not affiliated with Shopify Inc.
+            © {new Date().getFullYear()} {site.developer}. Foxly is not affiliated with Shopify Inc. ·{" "}
+            <Link href="/privacy" className="hover:text-fg">
+              Privacy Policy
+            </Link>
           </p>
           <p>
             Questions before booking?{" "}
