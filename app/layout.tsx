@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist } from "next/font/google";
+import Script from "next/script";
 import { MotionConfig } from "motion/react";
 import "./globals.css";
 import { Nav } from "@/components/nav";
@@ -45,6 +46,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html lang="en" className={`${geistSans.variable} h-full`} suppressHydrationWarning>
       <body className="flex min-h-full flex-col pb-20 md:pb-0">
         <SiteJsonLd />
+        <Script id="clarity" strategy="afterInteractive">
+          {`(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","yl5f0yxgcu");`}
+        </Script>
         <MotionConfig reducedMotion="user">
           <BookingProvider>
             <Nav />
