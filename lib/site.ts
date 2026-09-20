@@ -9,7 +9,7 @@ export const site = {
   // (must be NEXT_PUBLIC_*: it is read in client components and inlined at build time).
   book: process.env.NEXT_PUBLIC_CAL_BOOKING_URL || "https://cal.com/s-aziz/30min",
   support: "support@folyapps.com",
-  developer: "RedFox Digital",
+  developer: "FoxlyApps",
 };
 
 export const nav = [
@@ -17,6 +17,7 @@ export const nav = [
   { href: "/pricing", label: "Pricing" },
   { href: "/compare", label: "Compare" },
   { href: "/calculator", label: "COD Calculator" },
+  { href: "/about", label: "About" },
 ];
 
 export type Plan = {

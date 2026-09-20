@@ -41,7 +41,8 @@ export const viewport: Viewport = { themeColor: "#ff4d12" };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${geistSans.variable} h-full`}>
+    // ponytail: extensions (LanguageTool etc.) inject attrs on <html> pre-hydration.
+    <html lang="en" className={`${geistSans.variable} h-full`} suppressHydrationWarning>
       <body className="flex min-h-full flex-col pb-20 md:pb-0">
         <SiteJsonLd />
         <MotionConfig reducedMotion="user">

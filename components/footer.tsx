@@ -29,6 +29,7 @@ const cols = [
   {
     h: "Company",
     l: [
+      ["About us", "/about"],
       ["Book a free demo", "/book-demo"],
       ["Install on Shopify", site.install],
       ["Live demo store", site.demo],

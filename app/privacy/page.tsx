@@ -6,7 +6,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
-    "How Redfox Digital collects, uses and protects personal data in the Fox COD Form, Partial COD & Bundles Shopify app.",
+    "How FoxlyApps collects, uses and protects personal data in the Fox COD Form, Partial COD & Bundles Shopify app.",
   alternates: { canonical: "/privacy" },
   openGraph: { url: "/privacy" },
 };
@@ -21,7 +21,7 @@ const sections: Section[] = [
     n: "1",
     h: "Data Controller and Collection of Personal Data",
     body: [
-      "Redfox Digital (hereinafter referred to as “we”, “us”, or “our”), an entity operating under the laws of India, is responsible for processing personal data in connection with the use of the application Fox COD Form, Partial COD & Bundles (the “Application”).",
+      "FoxlyApps (hereinafter referred to as “we”, “us”, or “our”), an entity operating under the laws of India, is responsible for processing personal data in connection with the use of the application Fox COD Form, Partial COD & Bundles (the “Application”).",
       "We collect personal data:",
       ["Provided directly by users (merchants and customers)", "Automatically collected during the use of our Application"],
       "We process personal data in accordance with:",
